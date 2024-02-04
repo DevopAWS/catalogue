@@ -71,17 +71,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                script {
-                        def params = [
-                            string(name: 'version', value: "$packageVersion"),
-                            string(name: 'environment', value: "dev")
-                        ]
-                        build job: "catalogue-deploy", wait: true, parameters: params
-                    }
+                sh """
+                    echo "here i wrote shell script"
+                    #sleep 10
+                """
             }
         }
     }
-    post build
+    // post build
     post { 
         always { 
             echo 'I will always say Hello again!'
